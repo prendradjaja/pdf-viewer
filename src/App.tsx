@@ -19,6 +19,21 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const handleDragOver = (e: DragEvent) => e.preventDefault()
+    const handleDrop = (e: DragEvent) => {
+      e.preventDefault()
+      const dropped = e.dataTransfer?.files[0]
+      if (dropped?.type === 'application/pdf') setFile(dropped)
+    }
+    window.addEventListener('dragover', handleDragOver)
+    window.addEventListener('drop', handleDrop)
+    return () => {
+      window.removeEventListener('dragover', handleDragOver)
+      window.removeEventListener('drop', handleDrop)
+    }
+  }, [])
+
+  useEffect(() => {
     if (!file) return
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
