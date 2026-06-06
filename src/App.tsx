@@ -52,19 +52,19 @@ function App() {
       )}
       {file && (
         <>
-          <div style={{width: 'fit-content'}}>
+          <div className="document-container">
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess} externalLinkTarget="_blank">
-              <div style={{display: 'flex', gap: 10}}>
+              <div className="pages">
                 <Page pageNumber={pageNumber} width={width} />
-                <div style={{position: 'relative', height: '100vh'}}>
-                <div style={{position: 'absolute', bottom: 0}}>
-                  <Page pageNumber={pageNumber} width={width} />
-                </div>
+                <div className="page-bottom-anchor">
+                  <div>
+                    <Page pageNumber={pageNumber} width={width} />
+                  </div>
                 </div>
               </div>
             </Document>
           </div>
-          <div style={{position: 'absolute', top: 10, right: 10}}>Page {pageNumber} of {numPages}</div>
+          <div className="page-indicator">Page {pageNumber} of {numPages}</div>
         </>
       )}
     </>
