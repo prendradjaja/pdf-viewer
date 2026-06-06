@@ -23,9 +23,9 @@ function App() {
   useEffect(() => {
     if (!file) return
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (e.key === 'ArrowRight') {
         setPageNumber(p => Math.min(p + 1, numPages))
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      } else if (e.key === 'ArrowLeft') {
         setPageNumber(p => Math.max(p - 1, 1))
       }
     }
