@@ -8,6 +8,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+const width = 827;
+
 function App() {
   const [file, setFile] = useState<File | null>(null)
   const [numPages, setNumPages] = useState<number>(0)
@@ -45,10 +47,19 @@ function App() {
       )}
       {file && (
         <>
-          <Document file={file} onLoadSuccess={onDocumentLoadSuccess} externalLinkTarget="_blank">
-            <Page pageNumber={pageNumber} />
-          </Document>
-          <p>Page {pageNumber} of {numPages}</p>
+          <div style={{width: 'fit-content'}}>
+            <Document file={file} onLoadSuccess={onDocumentLoadSuccess} externalLinkTarget="_blank">
+              <div style={{display: 'flex', gap: 10}}>
+                <Page pageNumber={pageNumber} width={width} />
+                <div style={{position: 'relative', height: '100vh'}}>
+                <div style={{position: 'absolute', bottom: 0}}>
+                  <Page pageNumber={pageNumber} width={width} />
+                </div>
+                </div>
+              </div>
+            </Document>
+          </div>
+          <div style={{position: 'absolute', top: 10, left: 10}}>Page {pageNumber} of {numPages}</div>
         </>
       )}
     </>
