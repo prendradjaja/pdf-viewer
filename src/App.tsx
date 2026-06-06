@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url,
 ).toString();
-
 
 function App() {
   const [file, setFile] = useState<File | null>(null)
@@ -44,7 +45,7 @@ function App() {
       )}
       {file && (
         <>
-          <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+          <Document file={file} onLoadSuccess={onDocumentLoadSuccess} externalLinkTarget="_blank">
             <Page pageNumber={pageNumber} />
           </Document>
           <p>Page {pageNumber} of {numPages}</p>
