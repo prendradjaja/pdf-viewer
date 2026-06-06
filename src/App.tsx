@@ -64,7 +64,7 @@ function App() {
               </div>
             </Document>
           </div>
-          <div style={{position: 'absolute', top: 10, left: 10}}>Page {pageNumber} of {numPages}</div>
+          <div style={{position: 'absolute', top: 10, right: 10}}>Page {pageNumber} of {numPages}</div>
         </>
       )}
     </>
