@@ -27,6 +27,11 @@ function App() {
         setPageNumber(p => Math.min(p + 1, numPages))
       } else if (e.key === 'ArrowLeft') {
         setPageNumber(p => Math.max(p - 1, 1))
+      } else if (e.key === 'g') {
+        const input = prompt('Go to page:')
+        if (input === null) return
+        const n = parseInt(input, 10)
+        if (!isNaN(n)) setPageNumber(Math.min(Math.max(n, 1), numPages))
       }
     }
     window.addEventListener('keydown', handleKeyDown)
