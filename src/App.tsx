@@ -27,6 +27,10 @@ function App() {
         setPageNumber(p => Math.min(p + 1, numPages))
       } else if (e.key === 'ArrowLeft') {
         setPageNumber(p => Math.max(p - 1, 1))
+      } else if (e.key === 'ArrowDown') {
+        window.scrollTo({ top: document.body.scrollHeight })
+      } else if (e.key === 'ArrowUp') {
+        window.scrollTo({ top: 0 })
       } else if (e.key === 'g') {
         const input = prompt('Go to page:')
         if (input === null) return
